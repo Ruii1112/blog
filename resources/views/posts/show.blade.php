@@ -13,11 +13,12 @@
             @csrf
             @method('DELETE')
             <input type = "submit" style = "display:none">
-            <p class = "delete">[<span onclick = "return deletePost(this);">delete</span>]</p>
+            <p class = "delete">[<span onclick = "deletePost(this)">delete</span>]</p>
         </form>
         <div class = "post">
             <h2 class = "title">{{ $post -> title}}</h2>
             <p class = body>{{ $post -> body}}</p>
+            <a href = "/categories/{{ $post -> category -> id}}">{{ $post -> category -> name}}</a>
             <p class = "updated_at">{{ $post -> updated_at}}</p>
         </div>
         <div class = "footer">[<a href = "/">back</a>]</div>
@@ -25,6 +26,7 @@
         function deletePost(e){
             'use strict';
             if(confirm('削除すると復元できません。\n本当に削除しますか？')){
+                //console.log(e,'log');
                 document.getElementById('form_delete').submit();
             }
         }
