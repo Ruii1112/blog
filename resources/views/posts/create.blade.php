@@ -20,6 +20,14 @@
                 <textarea name = "post[body]" placeholder = "本文" value = "{{ old('post.body') }}"></textarea>
                 <p class = "title_error" style = "color:red">{{ $errors -> first('post.body') }}</p>
             </div>
+            <div class = "category">
+                <h2>Category</h2>
+                <select name = "post[category_id]">
+                    @foreach($categories as $category)
+                        <option value = "{{ $category->id }}">{{ $category->name}}</option>
+                    @endforeach
+                </select>
+            </div>
             <input type = "submit" value = "store"/>
         </form>
         <div class = "footer">[<a href = "/">back</a>]</div>
